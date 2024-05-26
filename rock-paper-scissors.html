@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+    <h1>じゃんけんゲーム</h1>
+    <p>下のボタンを押して、じゃんけんをしましょう！</p>
+    <button id="rock">🪨</button>
+    <button id="paper">📄</button>
+    <button id="scissors">✂️</button>
+    <div id="result"></div>
+
+    <script>
+        const choices = ['🪨', '📄', '✂️'];
+        const result = document.getElementById('result');
+
+        document.getElementById('rock').addEventListener('click', () => playGame('🪨'));
+        document.getElementById('paper').addEventListener('click', () => playGame('📄'));
+        document.getElementById('scissors').addEventListener('click', () => playGame('✂️'));
+
+        function playGame(playerChoice) {
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+            const combination = playerChoice + computerChoice;
+
+            switch (combination) {
+                case '🪨✂️':
+                case '📄🪨':
+                case '✂️📄':
+                    result.textContent = `あなたの勝ちです！ ${playerChoice} vs ${computerChoice}`;
+                    break;
+                case '🪨📄':
+                case '📄✂️':
+                case '✂️🪨':
+                    result.textContent = `あなたの負けです... ${playerChoice} vs ${computerChoice}`;
+                    break;
+                default:
+                    result.textContent = `引き分けです。 ${playerChoice} vs ${computerChoice}`;
+            }
+        }
+    </script>
+</body>
+</html>
