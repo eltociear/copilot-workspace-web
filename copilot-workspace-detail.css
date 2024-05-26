@@ -1,0 +1,35 @@
+/* Define a modern and appealing color scheme and font choices */
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Use CSS Flexbox for layout to ensure a responsive design */
+header, section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Style the header to be prominent and visually appealing */
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Apply padding and margins to create a visually comfortable space around content */
+section {
+    padding: 20px;
+    margin: 20px;
+}
+
+/* Include hover effects on links for better user interaction */
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
