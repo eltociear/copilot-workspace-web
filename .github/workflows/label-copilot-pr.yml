@@ -1,0 +1,19 @@
+name: Label Copilot PR
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Label PR
+        uses: actions/labeler@v3
+        if: contains(github.event.pull_request.body, 'open Copilot Workspace session')
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          configuration-path: .github/labeler.yml
