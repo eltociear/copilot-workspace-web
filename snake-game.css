@@ -1,0 +1,15 @@
+/* Basic styling for the snake game page */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+canvas {
+    background-color: #000;
+    display: block;
+}
