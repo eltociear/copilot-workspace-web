@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ChatGPT API Interface</title>
+</head>
+<body>
+    <h1>ChatGPT API Interface</h1>
+    <form id="chatGPTForm">
+        <label for="prompt">Prompt:</label>
+        <textarea id="prompt" name="prompt"></textarea><br>
+        <label for="apiKey">API Key:</label>
+        <input type="password" id="apiKey" name="apiKey"><br>
+        <button type="submit">Submit</button>
+    </form>
+    <label for="response">Response:</label>
+    <textarea id="response" name="response" readonly></textarea>
+
+    <script>
+        document.getElementById('chatGPTForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const prompt = document.getElementById('prompt').value;
+            const apiKey = document.getElementById('apiKey').value;
+            const responseArea = document.getElementById('response');
+
+            fetch('https://api.openai.com/v1/engines/davinci/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    prompt: prompt,
+                    max_tokens: 100
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                responseArea.value = data.choices[0].text;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                responseArea.value = 'Error: Could not retrieve response';
+            });
+        });
+    </script>
+</body>
+</html>
