@@ -15,6 +15,23 @@ let dino = {
 let obstacles = [];
 let score = 0;
 
+// Function to reset the game
+function resetGame() {
+    gameRunning = true;
+    dino = {
+        x: 50,
+        y: 200,
+        width: 50,
+        height: 50,
+        velocityY: 0,
+        jumpPower: -10,
+        gravity: 0.5
+    };
+    obstacles = [];
+    score = 0;
+    requestAnimationFrame(gameLoop);
+}
+
 function drawDino() {
     ctx.fillStyle = 'green';
     ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
@@ -102,4 +119,6 @@ function gameLoop() {
 }
 
 document.addEventListener('keydown', handleJump);
+// Add event listener for the reset button
+document.getElementById('resetButton').addEventListener('click', resetGame);
 requestAnimationFrame(gameLoop);
