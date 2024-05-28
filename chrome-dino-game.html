@@ -14,10 +14,22 @@
         canvas {
             border: 1px solid black;
         }
+        #resetButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <canvas id="gameCanvas"></canvas>
+    <button id="resetButton">リセット</button>
+    <div>
+        <h3>ゲームの説明と操作方法</h3>
+        <p>スペースキーを押してジャンプし、障害物を避けます。</p>
+    </div>
     <script src="chrome-dino-game.js"></script>
 </body>
 </html>
